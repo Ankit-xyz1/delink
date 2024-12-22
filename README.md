@@ -10,8 +10,10 @@ DeLink is a simple and secure URL shortener that prioritizes user anonymity and 
 
 ## Getting Started
 
+## https://delink-rho.vercel.app/
+
 ### Prerequisites
-To use or contribute to DeLink, ensure you have the following:
+To contribute to DeLink, ensure you have the following:
 - Node.js (v14 or above)
 - npm or yarn package manager
 
