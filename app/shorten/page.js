@@ -36,7 +36,7 @@ const page = () => {
                 redirect: "follow"
             };
 
-            fetch("http://localhost:3000/api/genrate", requestOptions)
+            fetch("/api/genrate", requestOptions)
                 .then((response) => response.json())
                 .then((result) => console.log("saved"))
                 .catch((error) => console.error(error));
