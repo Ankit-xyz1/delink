@@ -39,7 +39,10 @@ const page = () => {
             fetch("/api/genrate", requestOptions)
                 .then((response) => response.json())
                 .then((result) => console.log("saved"))
-                .catch((error) => return);
+                .catch((error) => {
+                    console.log(error);
+                    return;
+                } );
             setgenrated(`${process.env.NEXT_PUBLIC_HOST}/${shortUrl}`)
             seturl('')
             setshortUrl('')
