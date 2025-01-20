@@ -38,7 +38,23 @@ const page = () => {
 
             fetch("/api/genrate", requestOptions)
                 .then((response) => response.json())
-                .then((result) => console.log("saved" , result))
+                .then((result) => {
+                    console.log("trying......" , result))
+                    if(!result.success){
+                        console.log("not saved")
+                        toast.error('This link already exisit', {
+                        position: "top-right",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: false,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                        })
+                    }
+                    return
+                }
                 .catch((error) => {
                     console.log(error);
                     return;
