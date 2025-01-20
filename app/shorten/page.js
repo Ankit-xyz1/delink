@@ -36,7 +36,7 @@ const page = () => {
                 redirect: "follow"
             };
 
-            fetch("/api/genrate", requestOptions)
+            await fetch("/api/genrate", requestOptions)
                 .then((response) => response.json())
                 .then((result) => {
                     console.log("trying......" , result)
