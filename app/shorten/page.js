@@ -36,30 +36,25 @@ const page = () => {
                 redirect: "follow"
             };
 
-            await fetch("/api/genrate", requestOptions)
-                .then((response) => response.json())
-                .then((result) => {
-                    console.log("trying......" , result)
-                    if(!result.success){
-                        console.log("not saved")
-                        toast.error('This link already exisit', {
-                        position: "top-right",
-                        autoClose: 5000,
-                        hideProgressBar: false,
-                        closeOnClick: false,
-                        pauseOnHover: true,
-                        draggable: true,
-                        progress: undefined,
-                        theme: "light",
-                        })
-                    }
-                    setgenrated(`Try using Random alias`)
-                    return
+            let data = await fetch("/api/genrate", requestOptions)
+            let response = await data.json()
+            console.log("trying......" , response);
+            if(!result.success){
+                console.log("not saved")
+                toast.error('This link already exisit', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
                 })
-                .catch((error) => {
-                    console.log(error);
-                    return;
-                } );
+                setgenrated(`Try using Random alias`)
+                return;
+            }
+        
             setgenrated(`${process.env.NEXT_PUBLIC_HOST}/${shortUrl}`)
             seturl('')
             setshortUrl('')
