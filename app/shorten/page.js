@@ -38,7 +38,7 @@ const page = () => {
 
             fetch("/api/genrate", requestOptions)
                 .then((response) => response.json())
-                .then((result) => console.log("saved"))
+                .then((result) => console.log("saved" , result))
                 .catch((error) => {
                     console.log(error);
                     return;
