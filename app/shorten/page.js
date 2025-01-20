@@ -39,7 +39,7 @@ const page = () => {
             let data = await fetch("/api/genrate", requestOptions)
             let response = await data.json()
             console.log("trying......" , response);
-            if(!result.success){
+            if(!response.success){
                 console.log("not saved")
                 toast.error('This link already exisit', {
                 position: "top-right",
