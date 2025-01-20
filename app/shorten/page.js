@@ -53,6 +53,7 @@ const page = () => {
                         theme: "light",
                         })
                     }
+                    setgenrated(`Try using Random alias`)
                     return
                 })
                 .catch((error) => {
