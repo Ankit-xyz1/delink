@@ -2,6 +2,7 @@
   "name": "delink",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -10,7 +11,8 @@
   },
   "dependencies": {
     "dotenv": "^16.4.7",
-    "mongodb": "^6.12.0",
+    "lucide-react": "^0.503.0",
+    "mongoose": "^8.14.0",
     "next": "15.1.2",
     "randomstring": "^1.3.0",
     "react": "^19.0.0",
