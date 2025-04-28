@@ -6,15 +6,18 @@ import randomstring from "randomstring"
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
 import '@/app/globals.css'
+import { Loader } from 'lucide-react'
 
 
 const page = () => {
     const [url, seturl] = useState('')
     const [shortUrl, setshortUrl] = useState('')
     const [genrated, setgenrated] = useState("")
+    const [isLoading, setisLoading] = useState(false)
 
 
     const handleSubmit = async () => {
+        setisLoading(true)
         if (url && shortUrl) {
             console.log(url)
             console.log(shortUrl)
@@ -50,6 +53,7 @@ const page = () => {
                 theme: "light",
                 })
                 setgenrated(`Try using Random alias`)
+                setisLoading(false)
                 return;
             }
         
@@ -78,6 +82,7 @@ const page = () => {
                 theme: "light",
                 });
         }
+        setisLoading(false)
     }
 
     return (
@@ -94,7 +99,7 @@ const page = () => {
                 pauseOnHover
                 theme="dark"
             />
-            <div className="h-screen flex items-center justify-center w-full ubu">
+            <div className="h-screen flex items-center justify-center w-full bg-zinc-950">
                 <div className="w-[90%] h-[90vh] p-5 mt-11 ">
                     <h1 className='text-2xl text-center md:text-4xl'>Shorten your Urls ,<span className='text-green-600'> Without login</span> or being
                         <span className='text-red-600'> tracked</span></h1>
@@ -103,7 +108,7 @@ const page = () => {
                             onChange={(e) => { seturl(e.target.value) }}
                             value={url}
                             placeholder='Enter your link'
-                            className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-4'
+                            className='text-white tracking-wider bg-zinc-950 border-[1px] border-zinc-800 outline-none text-sm rounded block w-[80%] md:w-1/2 p-2.5 mt-4'
                             name=""
                             id=""
                         />
@@ -111,19 +116,19 @@ const page = () => {
                             onChange={(e) => { setshortUrl(e.target.value) }}
                             value={shortUrl}
                             placeholder='Enter prefer alias'
-                            className='mt-4 inline bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-1/2 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+                            className='text-zinc-300 bg-zinc-950 border-[1px] border-zinc-800 outline-none text-sm rounded block w-[80%] md:w-1/2 p-2.5 mt-4'
                             name=""
                             id=""
                         />
                         <span className='flex gap-5 items-center justify-center mt-4 w-full
                         '>
 
-                            <button className='text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 mt-4 w-1/8'
+                            <button className='text-white bg-zinc-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 mt-4 w-1/8'
                                 onClick={() => { setshortUrl(randomstring.generate(7)) }}
                             >Random-Alias</button>
-                            <button className='text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 mt-4 w-1/8'
+                            <button className='flex  items-center justify-center gap-1 text-white bg-zinc-900 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 mt-4 w-1/8'
                                 onClick={() => { handleSubmit() }}
-                            >Shorten</button>
+                            >{isLoading?<Loader size={18} className='animate-spin'/>:null}Shorten</button>
                         </span>
                     </div>
                     <div className='h-10 w-full mt-5 flex items-center justify-center'>
